@@ -1,0 +1,8 @@
+import stanford.karel.Karel;
+
+public class RightTurns extends Karel {
+    public void run(){
+        command();
+        //add or remove commands as required
+    }
+}

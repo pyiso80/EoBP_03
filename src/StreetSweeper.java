@@ -4,23 +4,20 @@ public class StreetSweeper extends Karel {
 
    public void run() {
       sweepAllStreets();
+
    }
 
-   private void sweepAllStreets() {
+   void sweepAllStreets() {
       while(leftIsClear()) {
-         sweepUntilEnd();
-         turnBack();
-         turnToNxtSt();
+         sweepFwd();
+         comeBackToStartOfStreet();
+         turnRight();
+         move();
+         turnRight();
       }
+      sweepFwd();
    }
-
-   private void turnToNxtSt() {
-      turnRight();
-      move();
-      turnRight();
-   }
-
-   private void turnBack() {
+   void comeBackToStartOfStreet() {
       turnLeft();
       turnLeft();
       while(frontIsClear()) {
@@ -28,23 +25,26 @@ public class StreetSweeper extends Karel {
       }
    }
 
-   private void sweepUntilEnd() {
-      while(frontIsClear()) {
-         sweepOneCorner();
-         move();
-      }
-      sweepOneCorner();
+   void turnRight() {
+      turnLeft();
+      turnLeft();
+      turnLeft();
    }
 
-   private void sweepOneCorner() {
+
+
+   void sweepFwd() {
+      while(frontIsClear()) {
+         if(beepersPresent()) {
+            pickBeeper();
+         }
+         move();
+      }
       if(beepersPresent()) {
          pickBeeper();
       }
    }
 
-   private void turnRight() {
-      for(int i = 0; i < 3; i++) {
-         turnLeft();
-      }
-   }
+
+
 }

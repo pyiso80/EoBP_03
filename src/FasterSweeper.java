@@ -4,7 +4,7 @@ public class FasterSweeper extends stanford.karel.Karel{
       sweepAll();
    }
 
-   private void sweepAll() {
+   void sweepAll() {
       sweepTillEnd();
       turnNorth();
       while(frontIsClear()) {
@@ -14,7 +14,11 @@ public class FasterSweeper extends stanford.karel.Karel{
       }
    }
 
-   private void turnNorth() {
+   /*
+   - Precondition: Karel is facing east or west.
+   - Postcondition: Karel face in the north direction.
+    */
+   void turnNorth() {
       if(facingEast()) {
          turnLeft();
       }else {
@@ -24,7 +28,16 @@ public class FasterSweeper extends stanford.karel.Karel{
       }
    }
 
-   private void turnToNextStreet() {
+   /*
+   - Karel move to the next street. He'll be facing east if he is on the 1st
+     column. He will be facing west if he is on the last column.
+   - Precondition: Karel is at the first corner or last corner on a street,
+     facing north.
+   - Postcondition: Karel is on the next street, on the same column. He will
+     be facing east if he is on the 1st column. He will be facing west if he
+     is on last column.
+    */
+   void turnToNextStreet() {
       if(rightIsBlocked()) {
          move();
          turnLeft();
@@ -34,7 +47,12 @@ public class FasterSweeper extends stanford.karel.Karel{
       }
    }
 
-   public void sweepTillEnd() {
+   /*
+   - Karel sweep all beepers on a street.
+   - Precondition: Karel is at the first corner on a street, facing east.
+   - Postcondition: Karel is at the last corner on the same street, facing east.
+    */
+   void sweepTillEnd() {
       while(frontIsClear()) {
          sweepCorner();
          move();
@@ -42,13 +60,13 @@ public class FasterSweeper extends stanford.karel.Karel{
       sweepCorner();
    }
 
-   private void sweepCorner() {
+   void sweepCorner() {
       if(beepersPresent()) {
          pickBeeper();
       }
    }
 
-   private void turnRight() {
+   void turnRight() {
       turnLeft();
       turnLeft();
       turnLeft();

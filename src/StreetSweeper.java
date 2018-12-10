@@ -4,7 +4,6 @@ public class StreetSweeper extends Karel {
 
    public void run() {
       sweepAllStreets();
-
    }
 
    void sweepAllStreets() {
@@ -31,8 +30,6 @@ public class StreetSweeper extends Karel {
       turnLeft();
    }
 
-
-
    void sweepFwd() {
       while(frontIsClear()) {
          if(beepersPresent()) {
@@ -44,7 +41,4 @@ public class StreetSweeper extends Karel {
          pickBeeper();
       }
    }
-
-
-
 }
